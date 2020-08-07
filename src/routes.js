@@ -1,8 +1,9 @@
 import Chapter from "./pages/Chapter";
-import Dashboard from "./pages/Dashboard";
+import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Chapters from "./pages/Chapters";
 import NestedChapter from "./pages/NestedChapter";
+import About from "./pages/About";
 
 const routes = [
     {
@@ -13,11 +14,11 @@ const routes = [
         main: Home
     },
     {
-        path: "/dashboard",
+        path: "/contact",
         exact: true,
         menu: "Dashboard",
         isLink: true,
-        main: Dashboard
+        main: Contact
     },
     {
         path: "/chapters",
@@ -39,6 +40,13 @@ const routes = [
         menu: "Nested",
         isLink: false,
         main: NestedChapter
+    },
+    {
+        path: "/about",
+        exact: true,
+        menu: "About",
+        isLink: true,
+        main: About
     },
 
 ];
