@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {HashRouter, Link, Route, Switch} from "react-router-dom";
+import {HashRouter, Link, Route} from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import About from "./pages/About";
