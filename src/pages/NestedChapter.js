@@ -4,10 +4,9 @@ const NestedChapter = (props) => {
     const params = props.match.params;
     console.log(params);
 
-
     return (
         <div>
-            <h3>I am nested </h3>
+            <h3>I am nested Page</h3>
         </div>
     )
 };

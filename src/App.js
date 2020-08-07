@@ -1,13 +1,10 @@
 import React from 'react';
 import './App.css';
 import {HashRouter, Link, Route} from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Chapters from "./pages/Chapters";
-import Chapter from "./pages/Chapter";
 import BreadCrumb from "./component/BreadCrumb";
-import NestedChapter from "./pages/NestedChapter";
+import ListGroup from "react-bootstrap/cjs/ListGroup";
+import routes from "./routes";
+import Switch from "react-bootstrap/Switch";
 
 function App() {
     return (
@@ -15,22 +12,41 @@ function App() {
 
             <HashRouter>
 
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/dashboard">Dashboard</Link></li>
-                    <li><Link to="/chapters">React Chapters</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                </ul>
+                <div style={{display: "flex"}}>
+                    <div
+                        style={{backgroundColor: "#15b280", borderRight: "1px solid #0979FA", height: "1200px"}}>
 
-                <BreadCrumb/>
+                        <ListGroup style={{width: "350px", height: "1000px"}}>
 
-                <Route exact path='/' component={Home}/>
-                <Route path='/dashboard' component={Dashboard}/>
-                <Route path='/chapters' component={Chapters}/>
-                <Route path="/chapters/:chapterId" component={Chapter}/>
-                <Route path="/chapters/:chapterId/:course" component={NestedChapter}/>
-                <Route path='/about' component={About}/>
+                            {routes?.map((route, index) => (
+                                <>
+                                    {route.isLink ?
+                                        <li><Link key={index} to={route.path}>{route.menu}</Link></li>
+                                        : ''}
+                                </>
+                            ))
+                            }
+
+                        </ListGroup>
+                    </div>
+
+                    <BreadCrumb/>
+
+                    <div style={{padding: "40px"}}>
+                        <Switch>
+                            {routes?.map((route, index) => (
+                                <Route
+                                    key={index}
+                                    path={route.path}
+                                    exact={route.exact}
+                                    component={route.main}
+                                />
+                            ))}
+                        </Switch>
+                    </div>
+                </div>
             </HashRouter>
+
         </div>
     );
 }
